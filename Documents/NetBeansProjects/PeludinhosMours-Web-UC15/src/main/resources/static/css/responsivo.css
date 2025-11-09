@@ -1,0 +1,2 @@
+@media (max-width: 940px){.hero{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr}}
+@media (max-width: 640px){.cards{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}

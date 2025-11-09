@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peludinhos Mours — Contato</title>
+
+  <link rel="icon" href="img/logo.svg" />
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="stylesheet" href="css/responsivo.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container">
+    <a class="brand" aria-label="Página inicial" href="index.html">
+      <img src="img/logo.svg" alt="Logo Peludinhos Mours" />
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"  class="nav__link">Início</a>
+      <a href="servicos.html" class="nav__link">Serviços</a>
+      <a href="agendamentos.html" class="nav__link">Agendamentos</a>
+      <a href="contato.html" class="nav__link nav__link--active">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container main">
+  <h1>Contato</h1>
+  <p>Fale com a equipe Peludinhos Mours. Responderemos o quanto antes!</p>
+
+  <!-- Fallback action: se o JS falhar, ainda tenta /contato (controlador) -->
+  <form id="form-contato" class="form" novalidate method="post" action="/contato">
+    <div class="grid-3">
+      <label>Nome
+        <input type="text" name="nome" required
+               placeholder="Digite seu nome completo"
+               autocomplete="name"
+               pattern="^[^\s]+\s(?!.*\s$).+$"
+               title="Digite seu nome completo." />
+      </label>
+
+      <label>E-mail
+        <input type="email" name="email" required placeholder="nome@exemplo.com" />
+      </label>
+
+      <label>Telefone
+        <input type="tel" name="telefone" required placeholder="(DDD) 90000-0000" autocomplete="tel" />
+      </label>
+    </div>
+
+    <label>Mensagem
+      <textarea name="mensagem" rows="5" required></textarea>
+    </label>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary">Enviar</button>
+      <button type="reset"  class="btn">Limpar</button>
+    </div>
+
+    <p id="msg-contato" class="msg" role="alert" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__grid">
+    <p>© <span id="year"></span> Peludinhos Mours — Banho &amp; Tosa</p>
+    <a class="link" href="mailto:contato@peludinhosmours.com">contato@peludinhosmours.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<script defer src="js/validacoes.js?v=3"></script>
+<script defer src="js/interacoes.js?v=3"></script>
+</body>
+</html>

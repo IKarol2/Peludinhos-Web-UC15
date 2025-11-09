@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peludinhos Mours — Agendamentos</title>
+
+  <link rel="icon" href="img/logo.svg" />
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="stylesheet" href="css/responsivo.css" />
+
+  <!-- Carregue JS no fim da página; aqui fica só o que for estritamente necessário -->
+</head>
+<body>
+<header class="topbar">
+  <div class="container">
+    <a class="brand" aria-label="Página inicial" href="index.html">
+      <img src="img/logo.svg" alt="Logo Peludinhos Mours" />
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"  class="nav__link">Início</a>
+      <a href="servicos.html" class="nav__link">Serviços</a>
+      <a href="agendamentos.html" class="nav__link nav__link--active">Agendamentos</a>
+      <a href="contato.html" class="nav__link">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container main">
+  <h1>Agendar serviço</h1>
+
+  <!-- Fallback action: se o JS falhar, ainda tenta /agendar (controlador) -->
+  <form id="form-agendamento" class="form" novalidate method="post" action="/agendar">
+    <div class="grid-3">
+      <label>Nome
+        <input type="text" name="nome" required
+               placeholder="Digite seu nome completo"
+               autocomplete="name"
+               pattern="^[^\s]+\s(?!.*\s$).+$"
+               title="Digite seu nome completo." />
+      </label>
+
+      <label>E-mail
+        <input type="email" name="email" required placeholder="nome@exemplo.com" />
+      </label>
+
+      <label>Telefone
+        <input type="tel" name="telefone" required placeholder="(DDD) 90000-0000" autocomplete="tel" />
+      </label>
+    </div>
+
+    <div class="grid-3">
+      <label>Nome do pet
+        <input type="text" name="pet" required placeholder="Ex.: Hércules" />
+      </label>
+
+      <label>Porte do pet
+        <select name="porte" required>
+          <option value="">Selecione</option>
+          <option value="PEQUENO">Pequeno</option>
+          <option value="MEDIO">Médio</option>
+          <option value="GRANDE">Grande</option>
+        </select>
+      </label>
+
+      <label>Serviço
+        <select name="servico" required>
+          <option value="">Selecione</option>
+          <option value="BANHO">Banho</option>
+          <option value="TOSA">Tosa</option>
+          <option value="HIGIENE">Higiene</option>
+          <option value="BANHO_TOSA">Banho e Tosa</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="grid-4">
+      <label>Data
+        <input type="date" name="data" required />
+      </label>
+
+      <label>Horário
+        <input type="time" name="hora" required />
+      </label>
+    </div>
+
+    <label>Observações
+      <textarea name="obs" rows="4" maxlength="300" placeholder="Detalhes sobre o pet (opcional)"></textarea>
+    </label>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary">Enviar pedido</button>
+      <button type="reset"  class="btn">Limpar</button>
+    </div>
+
+    <!-- Área de mensagens (JS preenche aqui) -->
+    <p id="msg-form" class="msg" role="alert" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__grid">
+    <p>© <span id="year"></span> Peludinhos Mours — Banho &amp; Tosa</p>
+    <a class="link" href="mailto:contato@peludinhosmours.com">contato@peludinhosmours.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Validações do front (sua versão atual) -->
+<script defer src="js/validacoes.js?v=3"></script>
+
+<!-- Integrações com o back-end e fetch; o ?v=3 força atualizar o arquivo -->
+<script defer src="js/interacoes.js?v=3"></script>
+</body>
+</html>
