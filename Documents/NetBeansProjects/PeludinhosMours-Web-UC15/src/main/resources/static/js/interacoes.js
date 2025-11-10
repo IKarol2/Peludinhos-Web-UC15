@@ -12,23 +12,30 @@
   }
 
   async function postJSON(url, data) {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-    const text = await res.text().catch(() => "");
-    let body = null;
-    try { body = text ? JSON.parse(text) : null; } catch { body = text; }
-    return { ok: res.ok, status: res.status, body };
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  const text = await res.text().catch(() => "");
+  let body = null;
+
+  try {
+    body = text ? JSON.parse(text) : null;
+  } catch (e) {
+    body = text;
   }
 
-  function showMsg(el, text, ok = true) {
-    if (!el) return;
-    el.textContent = text;
-    el.classList.remove("msg--error", "msg--success");
-    el.classList.add(ok ? "msg--success" : "msg--error");
-  }
+  return { ok: res.ok, status: res.status, body };
+}
+
+function showMsg(el, text, ok = true) {
+  if (!el) return;
+  el.textContent = text;
+  el.classList.remove("msg--error", "msg--success");
+  el.classList.add(ok ? "msg--success" : "msg--error");
+}
 
   // ===== normalizações exigidas pelo back =====
   // Controller aceita dd/MM/yyyy e HH:mm — deixamos garantido
@@ -44,7 +51,7 @@
   }
 
   function normalizaHora(valor) {
-    if (!valor) return null;
+    if (!valor) return valor;
     // aceita "HH:mm" do input[type=time]
     return valor;
   }
@@ -61,6 +68,7 @@
         showMsg(msg, "Corrija os campos destacados e tente novamente.", false);
         return;
       }
+
       const d = getFormData(formAg);
       const payload = {
         nome: d.nome,
@@ -68,9 +76,9 @@
         telefone: d.telefone,
         pet: d.pet,
         porte: d.porte,            // Pequeno|Médio|Grande
-        servico: d.servico,        // Banho|Tosa|...
+        servico: d.servico,     // Banho|Tosa|...
         data: normalizaData(d.data),
-        horario: normalizaHora(d.horario),
+        horario: normalizaHora(d.hora),
         observacoes: d.obs || ""
       };
 
@@ -127,5 +135,3 @@
     });
   }
 })();
-
-

@@ -44,6 +44,11 @@ public class ContatoController {
                 throw new IllegalArgumentException("Escreva uma mensagem antes de enviar.");
             }
 
+            // Set timestamp if missing
+            if (mensagem.getCreatedAt() == null) {
+                mensagem.setCreatedAt(java.time.OffsetDateTime.now());
+            }
+
             // Salvar no banco
             ContatoMensagem salvo = contatos.save(mensagem);
 

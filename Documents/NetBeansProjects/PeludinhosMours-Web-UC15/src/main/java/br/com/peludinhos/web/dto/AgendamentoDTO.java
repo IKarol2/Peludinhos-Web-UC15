@@ -20,7 +20,7 @@ public class AgendamentoDTO {
 
     @NotBlank // yyyy-MM-dd
     private String data;
-
+    
     @NotBlank // HH:mm
     private String horario;
 
