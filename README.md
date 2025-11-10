@@ -1,28 +1,41 @@
 # PeludinhosMoursCore
 
-**UC15 — Etapa 6 | Projeto Integrador: Banho e Tosa**
+**UC15 — Etapa 9 | Projeto Integrador: Banho e Tosa**
 
 ---
 
 ### Descrição do Projeto
-Este projeto faz parte da **Etapa 6** do curso técnico e representa o **módulo principal (core)** do sistema *Peludinhos Mours*, voltado para o gerenciamento de **clientes, pets, serviços e agendamentos** de banho e tosa.
+Esta é a Etapa 9 do Projeto Integrador, representando a versão web final do sistema Peludinhos Mours, agora com integração total entre front-end (HTML/CSS/JS) e back-end (Spring REST + MySQL).
 
-O sistema foi desenvolvido em **Java 11** utilizando **Maven**, dentro do **NetBeans**, seguindo o modelo de arquitetura em camadas e boas práticas de codificação.
+O sistema permite o envio de agendamentos de serviços e mensagens de contato diretamente pelas páginas web, gravando as informações no banco de dados peludinhos_db com sucesso.
+
+Foram realizadas configurações completas de integração com o banco, além de ajustes de compatibilidade e testes de funcionamento.
+As validações de front-end foram temporariamente desativadas, priorizando a entrega funcional e a persistência correta dos dados no back-end.
 
 ---
 
 ### Funcionalidades principais
-- Cadastro de **usuários**, **clientes**, **pets** e **serviços**  
-- Controle de **agendamentos**  
-- Aplicação de **estratégia de preço por porte do pet**  
-- Validação de **login duplicado e conflitos de horário**  
-- Execução automatizada de testes pelo método `Main`
+Integração entre HTML/JavaScript (fetch) e API REST (Spring Boot)
+
+- Envio de Agendamentos e Mensagens de Contato para o MySQL
+- Persistência de dados via Spring Data JPA (Hibernate)
+- Controladores REST:
+  - **AgendamentoController**
+  - **ContatoController**
+- Estrutura em camadas (Controller, Service, Repository, Model, DTO)
+- Testes automatizados com JUnit 5
+- Projeto configurado e executável via Maven no NetBeans IDE 13
 
 ---
 
 ### Tecnologias utilizadas
-- **Java 11**
+- **Java**
+- **Spring Boot (Web + JPA + REST)**
+- **MySQL**
 - **Maven**
+- **JUnit 5**
 - **NetBeans IDE**
+- **Git / GitHub**
+- **HTML / CSS / JavaScript**
 - **Git / GitHub**
 
