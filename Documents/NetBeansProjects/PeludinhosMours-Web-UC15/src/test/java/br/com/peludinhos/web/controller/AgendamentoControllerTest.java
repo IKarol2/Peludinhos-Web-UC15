@@ -1,6 +1,11 @@
 package br.com.peludinhos.web.controller;
 import br.com.peludinhos.web.dto.AgendamentoDTO;
+import br.com.peludinhos.web.model.Cliente;
+import br.com.peludinhos.web.model.Servico;
 import br.com.peludinhos.web.model.Agendamento;
+import br.com.peludinhos.web.repository.AgendamentoRepository;
+import br.com.peludinhos.web.repository.ClienteRepository;
+import br.com.peludinhos.web.repository.ServicoRepository;
 import br.com.peludinhos.web.service.AgendamentoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +30,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AgendamentoControllerTest {
 
     @Autowired MockMvc mvc;
-    @MockBean AgendamentoService service;
+    @MockBean AgendamentoRepository agendamentoRepository;
+    @MockBean ClienteRepository clienteRepository;
+    @MockBean ServicoRepository servicoRepository;
 
     @Test
     void postCriaAgendamento_201() throws Exception {
-        when(service.criar(any(AgendamentoDTO.class))).thenReturn(new Agendamento());
+        Cliente cliente = new Cliente();
+        cliente.setId(1L);
+        Servico servico = new Servico();
+        servico.setId(1L);
+        when(clienteRepository.findById(1L)).thenReturn(java.util.Optional.of(cliente));
+        when(servicoRepository.findById(1L)).thenReturn(java.util.Optional.of(servico));
+        Agendamento agendamento = new Agendamento();
+        agendamento.setId(123L);
+        when(agendamentoRepository.save(any(Agendamento.class))).thenReturn(agendamento);
         String body = "{\"clienteId\":1,\"servicoId\":1,\"data\":\"2025-11-01\",\"horario\":\"10:30\",\"observacoes\":\"ok\"}";
         mvc.perform(post("/api/agendamentos").contentType(MediaType.APPLICATION_JSON).content(body))
             .andExpect(status().isCreated())
