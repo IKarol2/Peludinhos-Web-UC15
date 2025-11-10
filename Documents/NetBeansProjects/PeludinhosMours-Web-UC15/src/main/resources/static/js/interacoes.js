@@ -61,7 +61,6 @@
         showMsg(msg, "Corrija os campos destacados e tente novamente.", false);
         return;
       }
-
       const d = getFormData(formAg);
       const payload = {
         nome: d.nome,

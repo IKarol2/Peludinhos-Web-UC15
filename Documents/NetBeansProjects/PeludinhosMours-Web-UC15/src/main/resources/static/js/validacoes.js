@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded',()=>{
  const ag=document.getElementById('form-agendamento');
  if(ag){const out=document.getElementById('msg-form');ag.addEventListener('submit',e=>{
   e.preventDefault();const d=Object.fromEntries(new FormData(ag).entries());
-  if(!d.nome?.trim() || d.nome.trim().split(/\s+/).length < 2) return showMsg(out,'Digite seu nome completo.');
+  if(!d.nome.trim() || d.nome.trim().split(/\s+/).length < 2) return showMsg(out,'Digite seu nome completo.');
   if(!isEmail(d.email)) return showMsg(out,'E-mail inválido.');
   if(!isPhone(d.telefone)) return showMsg(out,'Telefone inválido. Use (DDD) 90000-0000.');
-  if(!d.pet?.trim()) return showMsg(out,'Informe o nome do pet.');
+  if(!d.pet.trim()) return showMsg(out,'Informe o nome do pet.');
   if(!['PEQUENO','MEDIO','GRANDE'].includes(d.porte)) return showMsg(out,'Selecione o porte.');
   if(!d.servico) return showMsg(out,'Selecione o serviço.');
   if(!d.data) return showMsg(out,'Informe a data.');
@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded',()=>{
  const ct=document.getElementById('form-contato');
  if(ct){const out=document.getElementById('msg-contato');ct.addEventListener('submit',e=>{
   e.preventDefault();const d=Object.fromEntries(new FormData(ct).entries());
-  if(!d.nome?.trim() || d.nome.trim().split(/\s+/).length < 2) return showMsg(out,'Digite seu nome completo.');
+  if(!d.nome.trim() || d.nome.trim().split(/\s+/).length < 2) return showMsg(out,'Digite seu nome completo.');
   if(!isEmail(d.email)) return showMsg(out,'E-mail inválido.');
   if(!isPhone(d.telefone)) return showMsg(out,'Telefone inválido. Use (DDD) 90000-0000.');
-  if(!d.mensagem?.trim()) return showMsg(out,'Escreva sua mensagem.');
+  if(!d.mensagem.trim()) return showMsg(out,'Escreva sua mensagem.');
   showMsg(out,'Mensagem enviada!',true); ct.reset();
  });}
 });

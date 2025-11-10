@@ -114,7 +114,7 @@ public class AgendamentoController {
         }
     }
 
-    @GetMapping("/agendamentos!")
+    @GetMapping("/agendamento!")
     public ResponseEntity<?> listar() {
         return ResponseEntity.ok(agendamentos.findAll());
     }
